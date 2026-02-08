@@ -655,13 +655,13 @@ with tab2:
             if player != "None" and not st.session_state.exclude_home[pos]:
                 raw = player_try_probs_raw.get(player, average_raw_prob)
                 if "Wing" in pos or "Centre" in pos or pos == "Fullback":
-                    pos_factor = 1.5  # Tuned down
+                    pos_factor = 1.25  # Tuned down
                 elif "Eighth" in pos or "Halfback" in pos:
-                    pos_factor = 1.2  # Tuned down
+                    pos_factor = 1.1  # Tuned down
                 elif pos == "Hooker":
-                    pos_factor = 1.0
+                    pos_factor = 0.9
                 else:
-                    pos_factor = 0.5
+                    pos_factor = 0.3
                 adjusted_home_probs[player] = raw * pos_factor
 
         adjusted_away_probs = {}
@@ -670,13 +670,13 @@ with tab2:
             if player != "None" and not st.session_state.exclude_away[pos]:
                 raw = player_try_probs_raw.get(player, average_raw_prob)
                 if "Wing" in pos or "Centre" in pos or pos == "Fullback":
-                    pos_factor = 1.5  # Tuned down
+                    pos_factor = 1.25  # Tuned down
                 elif "Eighth" in pos or "Halfback" in pos:
-                    pos_factor = 1.2  # Tuned down
+                    pos_factor = 1.1  # Tuned down
                 elif pos == "Hooker":
-                    pos_factor = 1.0
+                    pos_factor = 0.9
                 else:
-                    pos_factor = 0.5
+                    pos_factor = 0.3
                 adjusted_away_probs[player] = raw * pos_factor
 
         total_home = sum(adjusted_home_probs.values())
@@ -874,4 +874,5 @@ with tab4:
         st.session_state.players.to_csv(PLAYER_STATS_FILE, index=False)
         st.cache_data.clear()  # Clear cache to reload data
         st.success("Players CSV updated - changes saved!")
+
         st.rerun()
