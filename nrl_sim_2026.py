@@ -19,7 +19,7 @@ LINEUPS_FILE = "saved_lineups.json"
 
 HOME_BOOST = 0.3
 FATIGUE_PENALTY = -0.05
-BASE_TRY_RATE = 0.025
+BASE_TRY_RATE = 0.018
 
 POSITIONS = [
     "Fullback", "Wing Left", "Centre Left", "Centre Right", "Wing Right",
@@ -876,3 +876,4 @@ with tab4:
         st.success("Players CSV updated - changes saved!")
 
         st.rerun()
+
